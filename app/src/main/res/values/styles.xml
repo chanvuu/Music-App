@@ -14,4 +14,21 @@
         <item name="android:textSize">15dp</item>
     </style>
 
+
+    <style name="circle">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!--    Phần này quyết định màu của đường viền TextInputLayout-->
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">#ffffff</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="hintTextColor">#ffffff</item>
+        <item name="android:theme">@style/exampleCursor</item>
+    </style>
+
+    <!--    Phần này quyết định màu con trỏ trong ô TextInputEditText-->
+    <style name="exampleCursor" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="colorControlActivated">#ffffff</item>
+    </style>
 </resources>
