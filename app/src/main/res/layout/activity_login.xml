@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login"
+    tools:context=".LoginActivity"
     android:background="@color/black"
     android:orientation="vertical">
 
@@ -32,6 +32,7 @@
         android:textSize="30sp" />
 
     <Button
+        android:id="@+id/btn_Register"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginHorizontal="30dp"
@@ -78,11 +79,12 @@
         android:textColor="@color/black"
         />
     <Button
+        android:id="@+id/btn_basicLogin"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="10dp"
-        android:background=""
+        android:background="@android:color/transparent"
         android:text="Đăng nhập"
         android:textColor="@color/white"
         />
