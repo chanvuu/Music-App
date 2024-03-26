@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        /*//Open basic login
+        //Open basic login
         Button btnBlogin = findViewById(R.id.btn_basicLogin);
         btnBlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
         //Open register page
         Button btnRegister = findViewById(R.id.btn_Register);
