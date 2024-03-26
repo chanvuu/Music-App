@@ -1,9 +1,12 @@
 package com.example.musicapp;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -18,12 +21,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.sql.DatabaseMetaData;
+import java.util.concurrent.locks.ReadWriteLock;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -128,18 +137,45 @@ public class RegisterActivity extends AppCompatActivity {
 
                             firebaseUser.sendEmailVerification();
 
-                            /*Intent intent = new Intent(RegisterActivity.this, UserProfileActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-                            finish();*/
+                            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textUsername, textDoB, textGender);
+
+                            DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
+                            referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()) {
+                                        firebaseUser.sendEmailVerification();
+                                        Toast.makeText(RegisterActivity.this, "User registered successfully", Toast.LENGTH_LONG).show();
+
+                                        /*Intent intent = new Intent(RegisterActivity.this, UserProfileActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                        finish();*/
+
+                                    } else {
+                                        Toast.makeText(RegisterActivity.this, "User registered failed", Toast.LENGTH_LONG).show();
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+
                         } else{
                             try {
                                 throw task.getException();
                             } catch (FirebaseAuthWeakPasswordException e){
                                 editTextRegisterConfirmPsw.setError("Your password is too week");
                                 editTextRegisterConfirmPsw.requestFocus();
-                            } catch (FirebaseAuthInvalidCredentialsException e){
-                                editTextRegisterPsw.setError("Your email is invalid or already in use");}
+                            } catch (FirebaseAuthInvalidCredentialsException e) {
+                                editTextRegisterEmail.setError("Your email is invalid or already in use");
+                                editTextRegisterEmail.requestFocus();
+                            } catch (FirebaseAuthUserCollisionException e){
+                                editTextRegisterEmail.setError("User is already registered with this email");
+                                editTextRegisterEmail.requestFocus();
+                            } catch (Exception e){
+                                Log.e(TAG, e.getMessage());
+                                Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
