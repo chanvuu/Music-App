@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "4107233589",
-    "project_id": "music-app-30aab",
-    "storage_bucket": "music-app-30aab.appspot.com"
+    "project_number": "393188542259",
+    "firebase_url": "https://music-ebd81-default-rtdb.firebaseio.com",
+    "project_id": "music-ebd81",
+    "storage_bucket": "music-ebd81.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:4107233589:android:3c6baa67b82f95a4b1047c",
+        "mobilesdk_app_id": "1:393188542259:android:3d591a414b55764c796046",
         "android_client_info": {
           "package_name": "com.example.musicapp"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB0G8KSmsNdkzdYdy9MNpm-fDHSMs-JlKw"
+          "current_key": "AIzaSyDZm7BVgkPlhzMJZGDXd-nsbvLqyQq4Gm8"
         }
       ],
       "services": {
