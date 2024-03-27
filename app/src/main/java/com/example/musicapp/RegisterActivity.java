@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -135,9 +136,10 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this, "User register successfully",Toast.LENGTH_LONG).show();
                             FirebaseUser firebaseUser = auth.getCurrentUser();
 
-                            firebaseUser.sendEmailVerification();
+                            UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(textUsername).build();
+                            firebaseUser.updateProfile(profileChangeRequest);
 
-                            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textUsername, textDoB, textGender);
+                            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDoB, textGender);
 
                             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
                             referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -154,8 +156,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     } else {
                                         Toast.makeText(RegisterActivity.this, "User registered failed", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.GONE);
+
                                     }
+                                    progressBar.setVisibility(View.GONE);
                                 }
                             });
 

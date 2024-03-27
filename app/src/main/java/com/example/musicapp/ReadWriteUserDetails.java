@@ -1,10 +1,10 @@
 package com.example.musicapp;
 
 public class ReadWriteUserDetails {
-    public String username, dob, gender;
+    public String  dob, gender;
 
-    public ReadWriteUserDetails(String textUsername, String textDoB, String textGender){
-        this.username = textUsername;
+    public ReadWriteUserDetails(String textDoB, String textGender){
+
         this.dob = textDoB;
         this.gender = textGender;
     }
