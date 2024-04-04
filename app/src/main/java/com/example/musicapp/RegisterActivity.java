@@ -2,6 +2,7 @@ package com.example.musicapp;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -33,6 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.sql.DatabaseMetaData;
+import java.util.Calendar;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.regex.Pattern;
 
@@ -44,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private RadioGroup radioGroupRegisterGender;
     private RadioButton radioButtonRegisterGenderSelected;
-
+    private DatePickerDialog picker;
 
 
     @Override
@@ -58,11 +61,31 @@ public class RegisterActivity extends AppCompatActivity {
         editTextRegisterUsername = findViewById(R.id.editText_Register_username);
         editTextRegisterEmail = findViewById(R.id.editText_Register_email);
         editTextRegisterDoB = findViewById(R.id.editText_Register_dob);
-        editTextRegisterPsw = findViewById(R.id.editText_Register_psw);
-        editTextRegisterConfirmPsw = findViewById(R.id.editText_Register_confirm_psw);
+        editTextRegisterPsw = findViewById(R.id.editText_Register_pwd);
+        editTextRegisterConfirmPsw = findViewById(R.id.editText_Register_confirm_pwd);
         progressBar = findViewById(R.id.progressBar);
         radioGroupRegisterGender = findViewById(R.id.radio_group_register_gender);
         radioGroupRegisterGender.clearCheck();
+
+        //chọn ngày sinh
+        editTextRegisterDoB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                picker = new DatePickerDialog(RegisterActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        editTextRegisterDoB.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                    }
+                },year, month, day);
+                picker.show();
+            }
+        });
+
 
         Button btnconfirmRegister = findViewById(R.id.btn_confirm_Register);
         btnconfirmRegister.setOnClickListener(new View.OnClickListener() {
