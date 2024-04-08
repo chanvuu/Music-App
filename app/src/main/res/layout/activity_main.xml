@@ -7,11 +7,11 @@
     android:background="@color/black"
 
     >
-    <include layout="@layout/profile_avatar"/>
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent"
+        />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,9 +20,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        app:itemBackground="@color/gray_strong"
         app:itemIconTint="@drawable/bottom_nav_selector"
         app:itemTextColor="@drawable/bottom_nav_selector"
+        android:background="@drawable/look_through_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -1,130 +1,71 @@
 package com.example.musicapp;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.FrameLayout;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GithubAuthProvider;
-import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
+import com.example.musicapp.Fragment.HomeFragment;
+import com.example.musicapp.Fragment.SearchFragment;
+import com.example.musicapp.Service.Authentication;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button googleAuth;
-    FirebaseAuth auth;
-    FirebaseDatabase database;
-    GoogleSignInClient googleSignInClient;
-    int RC_SIGN_IN;
+    private FrameLayout fragmentContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_main);
+        fragmentContainer = findViewById(R.id.fragmentContainer);
 
-        //Open basic login page
-        Button btnBlogin = findViewById(R.id.btn_basicLogin);
-        btnBlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Initially, load your default fragment
+//        loadFragment(new DefaultFragment());
 
-        //Google login
-        googleAuth = findViewById(R.id.btn_google_login);
-        auth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail().build();
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
-        googleAuth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                googleSignIn();
-            }
-        });
-
-        //Open register page
-        Button btnRegister = findViewById(R.id.btn_Register);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
+        // Set up bottom navigation item click listener
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setOnItemSelectedListener(item -> {
+            // Switch based on item IDs directly
+            switch (item.getItemId()) {
+                case R.id.home:
+                    // Handle Home item click
+                    // Replace the current fragment with the home fragment
+//                        loadFragment(new HomeFragment());
+                    loadFragment(new HomeFragment());
+                    return true;
+                case R.id.search:
+                    // Handle Search item click
+                    // Replace the current fragment with the search fragment
+                    loadFragment(new SearchFragment());
+                    return true;
+                case R.id.library:
+                    // Handle Library item click
+                    // Replace the current fragment with the library fragment
+//                        loadFragment(new LibraryFragment());
+                    Intent intent = new Intent(MainActivity.this, Authentication.class);
+                    startActivity(intent);
+                    return true;
+                default:
+                    return false;
             }
         });
     }
 
-    private void googleSignIn() {
-
-        Intent intent = googleSignInClient.getSignInIntent();
-        startActivityForResult(intent,RC_SIGN_IN);
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(fragmentContainer.getId(), fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == RC_SIGN_IN){
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try{
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuth(account.getIdToken());
-
-            }catch (Exception e){
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    private void firebaseAuth(String idToken) {
-
-        AuthCredential credential = GoogleAuthProvider.getCredential(idToken , null);
-        auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                if(task.isSuccessful()){
-                    FirebaseUser user = auth.getCurrentUser();
-
-                    HashMap<String,Object> map = new HashMap<>();
-                    map.put("id",user.getUid());
-                    map.put("name",user.getDisplayName());
-                    map.put("profile",user.getPhotoUrl().toString());
-
-                    database.getReference().child("users").child(user.getUid()).setValue(map);
-                    Toast.makeText(MainActivity.this, "đăng nhập google thành công",Toast.LENGTH_SHORT).show();
-                    /*Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                    startActivity(intent);*/
-
-                }else{
-                    Toast.makeText(MainActivity.this, "somthing went wrong",Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-
-    }
 }
+
