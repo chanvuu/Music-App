@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <TextView
+            android:id="@+id/textview_login_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:text="Email " />
+
+
+        <EditText
+            android:id="@+id/editText_login_email"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/gray"
+            android:textColor="@color/white"
+            android:layout_below="@+id/textview_login_email"/>
+
+        <TextView
+            android:id="@+id/textview_login_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:text="Mật khẩu"
+            android:layout_below="@+id/editText_login_email"/>
+
+
+        <EditText
+            android:id="@+id/editText_login_Pwd"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginHorizontal="30dp"
+            android:ems="10"
+            android:layout_marginTop="6dp"
+            android:background="@color/gray"
+            android:inputType="textPassword"
+            android:layout_below="@+id/textview_login_pwd"/>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="150dp"
+            android:text="Đăng nhập"
+            android:layout_below="@+id/editText_login_Pwd"/>
+        <Button
+            android:id="@+id/btn_login_without_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="Đăng nhập không cần mật khẩu"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:layout_below="@+id/btn_login"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_centerVertical = "true"
+            android:layout_centerHorizontal ="true"
+            android:elevation="10dp"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
