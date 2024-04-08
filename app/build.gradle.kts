@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -48,6 +49,16 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("androidx.browser:browser:1.8.0")
     implementation ("com.spotify.android:auth:2.1.0")
+    //lib firebase
+    implementation("com.google.firebase:firebase-auth:22.3.1")
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-database")
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation("com.firebaseui:firebase-ui-database:8.0.2")
+    implementation("com.google.firebase:firebase-storage")
+
+    implementation ("com.squareup.picasso:picasso:2.71828")
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
