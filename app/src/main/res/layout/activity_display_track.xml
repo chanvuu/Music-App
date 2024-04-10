@@ -1,0 +1,76 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimaryDark">
+
+    <!-- ImageView for background -->
+    <ImageView
+        android:id="@+id/playListImageView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <!-- LinearLayout containing TextView and RecyclerView -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_gravity="bottom"
+        tools:ignore="RtlSymmetry">
+
+        <LinearLayout
+            android:id="@+id/titleLayOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/playListNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="PlayListName"
+                android:textColor="@android:color/white"
+                android:textSize="25sp"
+                android:paddingStart="15dp"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleLayOut">
+            <LinearLayout
+                android:id="@+id/desLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/look_through_color"
+                >
+                <TextView
+                    android:id="@+id/playListDesTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="desription"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp"
+                    android:paddingStart="15dp"
+                    />
+
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/trackRecycleview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/desLayout"
+                android:paddingStart="15dp"
+                android:background="@color/black"
+            />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>

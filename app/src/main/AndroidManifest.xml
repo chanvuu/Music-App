@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,10 +15,28 @@
         android:theme="@style/Theme.MusicApp"
         tools:targetApi="31">
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activity.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.DisplayTrackActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".Activity.AuthenticationActivity" -->
+        <!-- android:launchMode="singleInstance" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.VIEW"/> -->
+        <!-- <category android:name="android.intent.category.DEFAULT"/> -->
+        <!-- <category android:name="android.intent.category.BROWSABLE"/> -->
+        <!-- <data -->
+        <!-- android:host="${redirectHostName}" -->
+        <!-- android:scheme="${redirectSchemeName}" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <activity
+            android:name=".Activity.AuthenticationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Service.Authentication"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
