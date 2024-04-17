@@ -23,6 +23,8 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
 
     private List<PlaylistSimple> playlists;
     private Context context;
+    private String accessToken;
+
 
     public PlayListAdapter(Context context, List<PlaylistSimple> playlists) {
         this.context = context;
@@ -46,6 +48,10 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     public int getItemCount() {
         return playlists.size();
     }
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView playListImageView;
@@ -80,6 +86,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
             intent.putExtra("playlistName", playlist.name);
             intent.putExtra("tracks", playlist.tracks);
             intent.putExtra("description", playlist.description);
+            intent.putExtra("accessToken", accessToken);
             Log.d("inform track", playlist.tracks.href);
 
 //            // Bắt đầu Activity mới

@@ -52,7 +52,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                 AuthorizationResponse.Type.TOKEN,
                 REDIRECT_URI
         ).setShowDialog(true);
-        builder.setScopes(new String[]{"user-read-email", "user-read-private"});
+        builder.setScopes(new String[]{"user-read-email", "user-read-private", "streaming"});
         AuthorizationRequest request = builder.build();
 
         // Bắt đầu quá trình đăng nhập

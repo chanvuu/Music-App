@@ -75,18 +75,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         Log.d("accessToken sau khi đăng nhập1: ", accessToken);
 
         PlayListData playListData = new PlayListData();
-        playListData.getPlaylist("37i9dQZF1DWVOaOWiVD1Lf", accessToken, new PlayListData.OnPlaylistLoadedListener1() {
-            @Override
-            public void onPlaylistLoaded(Playlist playlist) {
-                Log.d("test get track name",playlist.tracks.items.get(0).track.name);
-
-            }
-
-            @Override
-            public void onFailure(String errorMessage) {
-
-            }
-        });
+//        playListData.getPlaylist("37i9dQZF1DWVOaOWiVD1Lf", accessToken, new PlayListData.OnPlaylistLoadedListener1() {
+//            @Override
+//            public void onPlaylistLoaded(Playlist playlist) {
+//                Log.d("test get track name",playlist.tracks.items.get(0).track.name);
+//
+//            }
+//
+//            @Override
+//            public void onFailure(String errorMessage) {
+//
+//            }
+//        });
         playListData.getFeaturedPlaylists(accessToken, 20, 0, "vi_VN", new PlayListData.OnPlayListLoadedListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -119,6 +119,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                             String accessToken = dataSnapshot.child("accessToken").getValue(String.class);
                             String imgURL = dataSnapshot.child("imgURL").getValue(String.class);
                             if (accessToken != null && !accessToken.isEmpty()) {
+                                playListAdapter.setAccessToken(accessToken);
                                 // Gọi API của Spotify để lấy dữ liệu sử dụng accessToken
                                 loadPlayList(accessToken);
                                 //Load img cho user

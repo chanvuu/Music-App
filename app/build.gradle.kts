@@ -62,7 +62,7 @@ dependencies {
     implementation("com.google.firebase:firebase-storage")
 
     implementation ("com.squareup.picasso:picasso:2.71828")
-
+    //lib spotify sdk player
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
