@@ -1,7 +1,10 @@
 package com.example.musicapp.Data;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
+import com.example.musicapp.Model.EditPlayListRequest;
 import com.example.musicapp.Model.FeaturedPlaylists;
 import com.example.musicapp.Model.PlaylistBase;
 import com.example.musicapp.Model.PlaylistSimple;
@@ -66,6 +69,30 @@ public class PlayListData {
             @Override
             public void onFailure(@NonNull Call<Playlist> call, @NonNull Throwable t) {
                 listener.onFailure(t.getMessage());
+            }
+        });
+    }
+
+    public void updatePlaylist(String accessToken, String playlistId, EditPlayListRequest request) {
+        Call<Void> call = service.updatePlaylist(accessToken, playlistId, request);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d("respone",response.message());
+                Log.d("respone", String.valueOf(response.code()));
+                if (response.isSuccessful()) {
+                    // Xử lý khi yêu cầu thành công
+                    Log.d("updatePlayList", "Successfully");
+                } else {
+                    // Xử lý khi yêu cầu thất bại
+                    Log.d("updatePlayList", "Unsuccessfully");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                // Xử lý khi có lỗi xảy ra trong quá trình gửi yêu cầu
+                Log.d("updatePlayList", "call api fail" + t.getMessage());
             }
         });
     }
