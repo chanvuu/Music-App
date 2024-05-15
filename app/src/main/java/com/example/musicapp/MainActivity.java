@@ -14,6 +14,7 @@ import android.widget.FrameLayout;
 
 
 import com.example.musicapp.Fragment.HomeFragment;
+import com.example.musicapp.Fragment.LibraryFragment;
 import com.example.musicapp.Fragment.SearchFragment;
 import com.example.musicapp.Service.Authentication;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -50,9 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.library:
                     // Handle Library item click
                     // Replace the current fragment with the library fragment
-//                        loadFragment(new LibraryFragment());
-                    Intent intent = new Intent(MainActivity.this, Authentication.class);
-                    startActivity(intent);
+                    loadFragment(new LibraryFragment());
                     return true;
                 default:
                     return false;

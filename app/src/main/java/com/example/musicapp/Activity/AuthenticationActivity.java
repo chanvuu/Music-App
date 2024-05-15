@@ -25,6 +25,7 @@ import com.spotify.sdk.android.auth.AuthorizationClient;
 import com.spotify.sdk.android.auth.AuthorizationRequest;
 import com.spotify.sdk.android.auth.AuthorizationResponse;
 
+import java.util.Arrays;
 import java.util.List;
 
 import kaaes.spotify.webapi.android.models.Album;
@@ -36,7 +37,7 @@ import kaaes.spotify.webapi.android.models.UserPublic;
 
 public class AuthenticationActivity extends AppCompatActivity {
 
-    private static final String CLIENT_ID = "32f239026d4c4102b4a5be8f6e71f9cb";
+    private static final String CLIENT_ID = "dac6319dfb5c4831978c47ba5c9fdaff";
     private static final String REDIRECT_URI = "music-app-login://callback";
     private static final int REQUEST_CODE = 1337;
     private DatabaseReference databaseReference;
@@ -52,9 +53,10 @@ public class AuthenticationActivity extends AppCompatActivity {
                 AuthorizationResponse.Type.TOKEN,
                 REDIRECT_URI
         ).setShowDialog(true);
-        builder.setScopes(new String[]{"user-read-email", "user-read-private"});
+        builder.setScopes(new String[]{"user-read-email", "user-read-private", "streaming" ,
+                "playlist-read-private", "playlist-modify-public" , "ugc-image-upload",
+                "playlist-modify-private", "playlist-read-collaborative", "user-library-read"});
         AuthorizationRequest request = builder.build();
-
         // Bắt đầu quá trình đăng nhập
         AuthorizationClient.openLoginActivity(this, REQUEST_CODE, request);
     }
