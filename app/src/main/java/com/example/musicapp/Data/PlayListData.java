@@ -4,7 +4,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+
 import com.example.musicapp.Model.AddTrackRequest;
+
 import com.example.musicapp.Model.EditPlayListRequest;
 import com.example.musicapp.Model.FeaturedPlaylists;
 import com.example.musicapp.Model.PlaylistBase;
@@ -78,6 +80,7 @@ public class PlayListData {
             }
         });
     }
+
 
     public void getUserCurrentPlayList(String accessToken, int limit, int offset, final OnUserCurrentPlaylistLoadedListener listener) {
         Call<UserPlayList> call = service.getCurrentUserPlaylists("Bearer " + accessToken, limit, offset);
@@ -202,6 +205,7 @@ public class PlayListData {
             }
         });
     }
+
     public void updatePlaylist(String accessToken, String playlistId, EditPlayListRequest request) {
         Call<Void> call = service.updatePlaylist(accessToken, playlistId, request);
         call.enqueue(new Callback<Void>() {

@@ -1,13 +1,18 @@
 package com.example.musicapp.Service;
 
+
 import android.app.appsearch.SearchResult;
 
 import com.example.musicapp.Model.AddTrackRequest;
+
 import com.example.musicapp.Model.EditPlayListRequest;
 import com.example.musicapp.Model.FeaturedPlaylists;
 import com.example.musicapp.Model.PlaylistBase;
 import com.example.musicapp.Model.PlaylistBody;
 import com.example.musicapp.Model.PlaylistSimple;
+
+//import com.example.musicapp.Model.TokenResponse;
+
 import com.example.musicapp.Model.RemoveTracksRequest;
 import com.example.musicapp.Model.TokenResponse;
 import com.example.musicapp.Model.UserPlayList;
@@ -15,6 +20,7 @@ import com.example.musicapp.Model.UserPlayList;
 import org.checkerframework.checker.fenum.qual.PolyFenum;
 
 import java.util.List;
+
 
 import kaaes.spotify.webapi.android.models.Album;
 import kaaes.spotify.webapi.android.models.AlbumsPager;
@@ -28,7 +34,9 @@ import kaaes.spotify.webapi.android.models.UserPublic;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+
 import retrofit2.http.DELETE;
+
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -42,13 +50,13 @@ import retrofit2.http.Query;
 public interface SpotifyService {
     @FormUrlEncoded
     @POST("/api/token")
-    Call<TokenResponse> getAccessToken(
-            @Field("grant_type") String grantType,
-            @Field("code") String code,
-            @Field("redirect_uri") String redirectUri,
-            @Field("client_id") String clientId,
-            @Field("client_secret") String clientSecret
-    );
+//    Call<TokenResponse> getAccessToken(
+//            @Field("grant_type") String grantType,
+//            @Field("code") String code,
+//            @Field("redirect_uri") String redirectUri,
+//            @Field("client_id") String clientId,
+//            @Field("client_secret") String clientSecret
+//    );
     @GET("albums/{id}")
     Call<Album> getAlbum(@Path("id") String id, @Header("Authorization") String accessToken);
     @GET("albums")
@@ -95,6 +103,7 @@ public interface SpotifyService {
             @Query("ids") String trackIds
     );
 
+
     @POST("playlists/{playlist_id}/tracks")
     Call<Void> addTrackToPlaylist(
             @Header("Authorization") String accessToken,
@@ -115,6 +124,7 @@ public interface SpotifyService {
             @Header("Authorization") String authorization,
             @Body String base64Image
     );
+
     @PUT("playlists/{playlist_id}")
     Call<Void> updatePlaylist(
             @Header("Authorization") String accessToken,

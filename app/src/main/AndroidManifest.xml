@@ -18,6 +18,7 @@
             android:name=".Activity.EditPlayListActivity"
             android:exported="false" />
         <activity
+
             android:name=".Activity.DeletePlaylistActivity"
             android:exported="false" />
         <activity
@@ -30,6 +31,7 @@
             android:name=".Fragment.LibraryFragment"
             android:exported="false" />
         <activity
+
             android:name=".Activity.EditProfileActivity"
             android:exported="false" />
         <activity
