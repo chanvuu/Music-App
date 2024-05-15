@@ -4,4 +4,5 @@
     <string name="name">Name Placeholder</string>
     <string name="top_artist_txtView">Top Artists</string>
     <string name="author_name">by %1$s</string>
+    <string name="default_web_client_id">393188542259-b8o5epfeqf8bcgv076majbg4q765gdgo.apps.googleusercontent.com</string>
 </resources>
