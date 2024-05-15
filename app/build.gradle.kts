@@ -62,6 +62,9 @@ dependencies {
     implementation("com.google.firebase:firebase-storage")
 
     implementation ("com.squareup.picasso:picasso:2.71828")
+    implementation("androidx.activity:activity:1.8.0")
+
+
     //lib spotify sdk player
 
     testImplementation("junit:junit:4.13.2")
