@@ -18,6 +18,20 @@
             android:name=".Activity.EditPlayListActivity"
             android:exported="false" />
         <activity
+
+            android:name=".Activity.DeletePlaylistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.CreatePlayListLibrary"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.AddTrackToLibrayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Fragment.LibraryFragment"
+            android:exported="false" />
+        <activity
+
             android:name=".Activity.EditProfileActivity"
             android:exported="false" />
         <activity
@@ -35,6 +49,9 @@
         <!-- android:scheme="${redirectSchemeName}" /> -->
         <!-- </intent-filter> -->
         <!-- </activity> -->
+        <activity
+            android:name=".Activity.PlayerActivity"
+            android:exported="true" />
         <activity
             android:name=".Activity.AuthenticationActivity"
             android:exported="true" />
