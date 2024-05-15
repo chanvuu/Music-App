@@ -39,7 +39,10 @@ public class EditPlayListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String playlistNameEdited = String.valueOf(playlistNameEditText.getText());
                 String descriptionEdited = String.valueOf(descriptionEditText.getText());
-
+                Log.d("playlistNameEdited",playlistNameEdited);
+                Log.d("descriptionEdited",descriptionEdited);
+                Log.d("accessToken",accessToken);
+                Log.d("playlistId",playlistId);
 
                 EditPlayListRequest editPlayListRequest = new EditPlayListRequest(playlistNameEdited, true, descriptionEdited, false);
                 Log.d("editPlayListRequest.getDescription();",editPlayListRequest.getDescription());
