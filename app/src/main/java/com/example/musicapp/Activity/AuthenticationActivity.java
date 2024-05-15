@@ -53,9 +53,13 @@ public class AuthenticationActivity extends AppCompatActivity {
                 AuthorizationResponse.Type.TOKEN,
                 REDIRECT_URI
         ).setShowDialog(true);
+
+        builder.setScopes(new String[]{"user-read-email", "user-read-private", "streaming"});
+
         builder.setScopes(new String[]{"user-read-email", "user-read-private", "streaming" ,
                 "playlist-read-private", "playlist-modify-public" , "ugc-image-upload",
                 "playlist-modify-private", "playlist-read-collaborative", "user-library-read"});
+
         AuthorizationRequest request = builder.build();
         // Bắt đầu quá trình đăng nhập
         AuthorizationClient.openLoginActivity(this, REQUEST_CODE, request);

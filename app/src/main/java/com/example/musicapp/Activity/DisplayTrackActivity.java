@@ -1,7 +1,9 @@
 package com.example.musicapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.appcompat.widget.PopupMenu;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +19,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.musicapp.Adapter.AlbumAdapter;
+import com.example.musicapp.Adapter.PlayListAdapter;
+
+
+
 import com.example.musicapp.Adapter.TrackAdapter;
 import com.example.musicapp.Data.PlayListData;
 import com.example.musicapp.Model.PlaylistBase;
@@ -29,13 +36,20 @@ import java.util.List;
 import kaaes.spotify.webapi.android.models.Playlist;
 import kaaes.spotify.webapi.android.models.PlaylistTrack;
 
+import kaaes.spotify.webapi.android.models.Track;
+import kaaes.spotify.webapi.android.models.Tracks;
+
+
+
 
 public class DisplayTrackActivity extends AppCompatActivity {
     private List<PlaylistBase> playlists;
     private List<PlaylistTrack> tracks;
     private TrackAdapter trackAdapter;
     private RecyclerView recyclerView;
+
     private ImageButton moreButton;
+
 
 
 
@@ -51,8 +65,10 @@ public class DisplayTrackActivity extends AppCompatActivity {
             String playlistName = extras.getString("playlistName");
             String description = extras.getString("description");
             String accessToken = extras.getString("accessToken");
+
             Log.d("playlistId", playlistId);
             Log.d("accessToken", accessToken);
+
 
             // Hiển thị dữ liệu
             ImageView imageView = findViewById(R.id.playListImageView);
@@ -61,17 +77,22 @@ public class DisplayTrackActivity extends AppCompatActivity {
             moreButton = findViewById(R.id.moreButton);
             playListNametextView.setText(playlistName);
             descriptionTextView.setText(description);
+
+            Picasso.get().load(playlistImageUrl).into(imageView);
+
             if (!playlistImageUrl.isEmpty() && playlistImageUrl != null){
                 Picasso.get().load(playlistImageUrl).into(imageView);
             }else{
                 Picasso.get().load(R.drawable.liked).into(imageView);
             }
+
             // Hien thi du lieu track
             recyclerView = findViewById(R.id.trackRecycleview);
             recyclerView.setLayoutManager(new LinearLayoutManager(this)); // Set layout manager
             tracks = new ArrayList<>();
             trackAdapter = new TrackAdapter(DisplayTrackActivity.this, tracks);
             recyclerView.setAdapter(trackAdapter);
+
             moreButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -113,6 +134,7 @@ public class DisplayTrackActivity extends AppCompatActivity {
                     popupMenu.show();
                 }
             });
+
             loadTracks(accessToken ,playlistId);
         }
     }
@@ -121,23 +143,37 @@ public class DisplayTrackActivity extends AppCompatActivity {
         Log.d("accessToken sau khi đăng nhập1: ", accessToken);
 
         PlayListData playListData = new PlayListData();
+
         Log.d("acsadasd", accessToken);
         Log.d("acsadasd", playlistId);
+
         playListData.getPlaylist(playlistId, accessToken, new PlayListData.OnPlaylistLoadedListener1() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onPlaylistLoaded(Playlist playlist) {
+
+                Log.d("test get track name",playlist.tracks.items.get(0).track.name);
+                Log.d("test get track name",playlist.tracks.items.get(1).track.name);
+                tracks.addAll(playlist.tracks.items);
+                trackAdapter.notifyDataSetChanged();
+
+
                 if (playlist.tracks != null && !playlist.tracks.items.isEmpty()){
                     Log.d("test get track name",playlist.tracks.items.get(0).track.name);
                     trackAdapter.setAccessToken(accessToken);
                     trackAdapter.setPlaylistId(playlistId);
                     trackAdapter.updatePlaylists(playlist.tracks.items);
                 }
+
             }
 
             @Override
             public void onFailure(String errorMessage) {
+
+
+
                 Log.e("error", errorMessage);
+
             }
         });
     }

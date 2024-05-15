@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:queryHint="Bạn muốn nghe gì?"
+        android:gravity="left|center_vertical"
+        app:iconifiedByDefault="false"
+        android:background="@color/blur_black"
+        android:theme="@style/ThemeOverlay.SearchView"
+        app:searchIcon="@drawable/search"
+        app:closeIcon="@drawable/ic_close_white_24dp"
+        tools:ignore="RtlHardcoded" />
+
+</LinearLayout>
+
