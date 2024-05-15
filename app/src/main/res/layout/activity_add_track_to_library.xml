@@ -1,0 +1,69 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        app:titleTextColor="@android:color/white"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <!-- Nút Back -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="8dp"
+            android:src="@drawable/arrow_left"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <!-- Tiêu đề -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thêm vào danh sách phát"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/libraryRecycleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/addButton"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/black"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/green"
+        android:text="Xong"
+        android:textColor="@android:color/white"
+        app:cornerRadius="20dp"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp" />
+
+</RelativeLayout>

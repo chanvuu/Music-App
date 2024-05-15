@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.musicapp" />
-                  <option name="mobileSdkAppId" value="1:152939076709:android:e39f678c352812c0b33a8c" />
-                  <option name="projectId" value="music-app-b8add" />
-                  <option name="projectNumber" value="152939076709" />
+                  <option name="mobileSdkAppId" value="1:846248676916:android:6ca70057e7872cfb16c461" />
+                  <option name="projectId" value="musicapp-37f46" />
+                  <option name="projectNumber" value="846248676916" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
