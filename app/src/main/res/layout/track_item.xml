@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@color/colorPrimaryDark"
     android:paddingTop="15dp"
     android:paddingStart="15dp"
+
     tools:ignore="RtlSymmetry">
+
+    android:clickable="true"
+    android:focusable="true"
+    tools:ignore="RtlSymmetry">
+
+
     <ImageView
         android:id="@+id/trackImage"
         android:layout_width="50dp"
@@ -15,12 +26,14 @@
         tools:srcCompat="@tools:sample/avatars"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/trackNameTextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/textLayout"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintStart_toEndOf="@+id/trackImage"
         app:layout_constraintTop_toTopOf="@+id/trackImage"
+
         android:text="trackName"
         android:textColor="@color/white"
         android:paddingTop="5dp"
@@ -43,3 +56,46 @@
         tools:ignore="MissingConstraints,RtlSymmetry" />
     
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+        android:layout_marginStart="8dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        >
+
+        <TextView
+            android:id="@+id/trackNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="trackName"
+            android:textColor="@color/white"
+            android:paddingTop="5dp"
+            android:paddingStart="5dp"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/artistsNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="artistName"
+            android:textColor="@color/gray"
+            android:paddingStart="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/likedButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="40dp"
+        android:src="@drawable/heart_unliked"
+        android:background="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/textLayout"
+        app:layout_constraintTop_toTopOf="@+id/textLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/textLayout"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

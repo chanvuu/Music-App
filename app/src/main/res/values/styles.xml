@@ -51,4 +51,6 @@
     <style name="exampleCursor" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
         <item name="colorControlActivated">#ffffff</item>
     </style>
+    <!-- res/values/styles.xml -->
+
 </resources>

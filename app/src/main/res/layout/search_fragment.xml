@@ -5,184 +5,67 @@
     android:id="@+id/search_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
+
     android:layout_marginBottom="57dp"
     android:fitsSystemWindows="true">
 
-
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/black">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:gravity="center_vertical"
-                >
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical">
 
-                <include layout="@layout/profile_avatar"/>
+                <include layout="@layout/profile_avatar" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
                     android:text="Tìm kiếm"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
                     android:textSize="25sp"
-                    android:layout_marginStart="15dp"
-                    />
-                
-            </LinearLayout>
-            <RelativeLayout
-                android:id="@id/search_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp">
-
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/search_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/search"
-                    android:text="Bạn muốn nghe gì?"
-                    android:gravity="left|center_vertical"
-                    android:backgroundTint="@color/blur_black"
-                    tools:ignore="RtlHardcoded" />
-
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="140dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="15dp"
-                    android:text="Duyệt tìm tất cả"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/musiclist"
+            <RelativeLayout
+                android:id="@id/search_button"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_marginTop="180dp"
-                android:gravity="center_horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginRight="10dp">
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:backgroundTint="@color/colorAccent"
-                    android:gravity="left|top"
-                    android:text="Pop"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16dp" />
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:iconifiedByDefault="false"
+                    app:queryHint="Bạn muốn nghe gì?"
+                    tools:ignore="NotSibling" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_marginLeft="15dp"
-                    android:backgroundTint="@color/green"
-                    android:gravity="left|top"
-                    android:text="Podcast"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16dp" />
+            </RelativeLayout>
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_marginLeft="-315dp"
-                    android:layout_marginTop="100dp"
-                    android:backgroundTint="@color/purple_200"
-                    android:gravity="left|top"
-                    android:text="Rock"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="100dp"
-                    android:backgroundTint="#2196F3"
-                    android:gravity="left|top"
-                    android:text="Rap"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_marginLeft="-315dp"
-                    android:layout_marginTop="200dp"
-                    android:backgroundTint="#4527A0"
-                    android:gravity="left|top"
-                    android:text="Hip Hop"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="200dp"
-                    android:backgroundTint="#FFC107"
-                    android:gravity="left|top"
-                    android:text="İndie"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_marginLeft="-315dp"
-                    android:layout_marginTop="300dp"
-                    android:backgroundTint="#FF9E80"
-                    android:gravity="left|top"
-                    android:text="Lists"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="300dp"
-                    android:backgroundTint="#B71C1C"
-                    android:gravity="left|top"
-                    android:text="Radio"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16dp" />
-            </LinearLayout>
-
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/searchRecycleview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/search_button"
+                android:background="@color/black" />
         </RelativeLayout>
-
-
-    </ScrollView>
-
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
