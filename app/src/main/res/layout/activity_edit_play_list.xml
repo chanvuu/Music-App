@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.EditPlayListActivity">
+    android:orientation="vertical"
+    android:background="@color/black"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/close"
+            android:contentDescription="close"
+            android:layout_alignParentStart="true"
+            android:background="@android:color/transparent"
+            android:gravity="start"
+            android:layout_toLeftOf="@+id/text1"
+            app:elevation="0dp"
+            app:tint="@color/white"
+            app:backgroundTint="@android:color/transparent"
+            app:pressedTranslationZ="0dp"
+            app:rippleColor="#000000"/>
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chỉnh sửa hồ Playlist"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffffff"/>
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lưu"
+            android:singleLine="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:textColor="#ffffff"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="end"
+            android:layout_toRightOf="@+id/text1"/>
+
+
+    </RelativeLayout>
+</LinearLayout>
